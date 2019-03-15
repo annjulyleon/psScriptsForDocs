@@ -19,6 +19,17 @@ Get-ChildItem -Path $path -Include *.doc, *.docx -Recurse |
     ForEach-Object {
         $doc = $wd.Documents.Open($_.Fullname)
         $pdf = $_.FullName -replace $_.Extension, '.pdf'
+		$doc.Fields.Update() | Out-Null
+		foreach ($Section in $doc.Sections)
+        {
+            # Update Header
+            $Header = $Section.Headers.Item(1)
+            $Header.Range.Fields.Update()
+
+            # Update Footer
+            $Footer = $Section.Footers.Item(1)
+            $Footer.Range.Fields.Update()
+        }
         $doc.ExportAsFixedFormat($pdf,17,$false,$opt,0,0,$false,$false,1,$false,$false,$true)
         $doc.Close()
     }
