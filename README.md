@@ -6,7 +6,7 @@ Add or update custom properties .docx for all documents in folder. Script update
 
 Example usage:
 ```bash
-.\UpdateDocxProps.ps1 -dir D:\path\to\docs -conf D:\path\to\config\config.xml
+.\UpdateDocxProps.ps1 -dir D:\path\to\docs -conf D:\path\to\config\UpdateDocxPropsConfig.xml
 ```
 Example config:
 
