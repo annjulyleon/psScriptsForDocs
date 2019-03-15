@@ -3,7 +3,8 @@
 [RU](README_RU.md)
 
 [UpdateDocxProps.ps1](#updatedocxpropsps1)  
-[DocToPdf.ps1](#doctopdfps1)
+[DocToPdf.ps1](#doctopdfps1)  
+[FindAndReplace.ps1](#findandreplaceps1)
 
 ## UpdateDocxProps.ps1
 
@@ -47,3 +48,21 @@ Usage:
 Source: 
 - [powershell script convert doc to pdf](https://social.technet.microsoft.com/Forums/ie/en-US/445b2429-e33c-4ce0-9d64-dd31422571bf/powershell-script-convert-doc-to-pdf?forum=winserverpowershell)
 - [Document.ExportAsFixedFormat Method](https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb256835(v=office.12))
+
+
+## FindAndReplace.ps1
+
+Find and replace strings for multiple .docx files
+
+Usage:
+```bach
+.\FindAndReplace.ps1 D:\path\to\folder 'text to find' 'text to replace'
+```
+`-dir` - directory with docx files  
+`-find` - string to find  
+`-replace` - string to replace  
+
+Source and usefull links:
+- [Replacing many Words in a .docx File with Powershell](https://stackoverflow.com/questions/40101846/replacing-many-words-in-a-docx-file-with-powershell)
+- [PowerShell script to Find and Replace in Word Document, including Header, Footer and TextBoxes within
+](https://codereview.stackexchange.com/questions/174455/powershell-script-to-find-and-replace-in-word-document-including-header-footer)
