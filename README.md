@@ -33,7 +33,7 @@ Source:
 
 ## DocToPdf.ps1
 
-Convert .docx and .doc to pdf + update fields. Output pdf are placed in the same directory.
+Convert .docx and .doc to pdf + update fields (optional).
 
 Usage:
 ```bash
