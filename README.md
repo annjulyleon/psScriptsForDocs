@@ -41,7 +41,7 @@ Usage:
 ```
 `-dir` - path to docx folder  
 `-out` - (optional) specify output diectory for pdf. Default is the `$dir`  
-`-opt` - (optional) choose quality, 1 - export for print, smaller size, 0 - export for print, large file. Default 0  
+`-opt` - (optional) choose quality, 1 - export for preview, smaller size, 0 - export for print, large file. Default 0  
 `-update` - (optional) `$true` - update fields, `$false` - don't update. Default is `$true`  
 
 Source: 
