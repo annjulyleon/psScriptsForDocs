@@ -1,0 +1,8 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <appSettings>
+<!--Vars -->
+    <add key="NameOfProperty1" value="ValueOfProperty1"/>
+	<add key="NameOfProperty2" value="ValueOfProperty2"/>
+  </appSettings>
+</configuration>
