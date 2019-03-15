@@ -37,10 +37,12 @@ Convert .docx and .doc to pdf + update fields. Output pdf are placed in the same
 
 Usage:
 ```bash
-.\DocToPdf.ps1 -dir D:\path\to\docs -opt 1
+.\DocToPdf.ps1 -dir D:\path\to\docs -out D:\path\to\output -opt 0 -update $false
 ```
-`-dir` path to folder with doc/docx  
-`-opt` (optional) choose quality, 1 - export for print, smaller size, 0 - export for print, large file. Default 0
+`-dir` - path to docx folder  
+`-out` - (optional) specify output diectory for pdf. Default is the `$dir`  
+`-opt` - (optional) choose quality, 1 - export for print, smaller size, 0 - export for print, large file. Default 0  
+`-update` - (optional) `$true` - update fields, `$false` - don't update. Default is `$true`  
 
 Source: 
 - [powershell script convert doc to pdf](https://social.technet.microsoft.com/Forums/ie/en-US/445b2429-e33c-4ce0-9d64-dd31422571bf/powershell-script-convert-doc-to-pdf?forum=winserverpowershell)
