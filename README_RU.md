@@ -1,5 +1,9 @@
 # Powershell scripts for docs
 
+[UpdateDocxProps.ps1](#updatedocxpropsps1)  
+[DocToPdf.ps1](#doctopdfps1)  
+[FindAndReplace.ps1](#findandreplaceps1)
+
 ## UpdateDocxProps.ps1
 
 Скрипт PowerShell для добавления и обновления свойств в документах .docx. При сохранении обновляет поля, в том числе в колонтитулах. Свойства берутся из конфигурационного файла .xml.
@@ -30,7 +34,7 @@
 - [How to change custom properties for many Word documents](https://stackoverflow.com/a/35920682)
 - [Powershell Update Fields in Header and Footer in Word](https://stackoverflow.com/questions/24887905/powershell-update-fields-in-header-and-footer-in-word)
 
-# Скрипт DocToPdf
+# DocToPdf.ps1
 
 Конвертирует документы doc/docx в pdf. Обновляет поля (опционально), можно настраивать качество pdf (для просмотра или для печати)
 
@@ -48,3 +52,20 @@ Github: <https://github.com/annjulyleon/psScriptsForDocs>
 Источники: 
 - [powershell script convert doc to pdf](https://social.technet.microsoft.com/Forums/ie/en-US/445b2429-e33c-4ce0-9d64-dd31422571bf/powershell-script-convert-doc-to-pdf?forum=winserverpowershell)
 - [Document.ExportAsFixedFormat Method](https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb256835(v=office.12))
+
+## FindAndReplace.ps1
+
+ Поиск и замена текстовой строки для нескольких .docx файлов
+
+Использование:
+```bach
+.\FindAndReplace.ps1 D:\path\to\folder 'text to find' 'text to replace'
+```
+`-dir` - путь к папке с docx  
+`-find` - строка для поиска  
+`-replace` - строка для замены  
+
+Источники и полезные ссылки:
+- [Replacing many Words in a .docx File with Powershell](https://stackoverflow.com/questions/40101846/replacing-many-words-in-a-docx-file-with-powershell)
+- [PowerShell script to Find and Replace in Word Document, including Header, Footer and TextBoxes within
+](https://codereview.stackexchange.com/questions/174455/powershell-script-to-find-and-replace-in-word-document-including-header-footer)
