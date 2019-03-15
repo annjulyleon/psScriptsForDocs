@@ -29,3 +29,22 @@
 - [How can I introduce a config file to Powershell scripts?](https://stackoverflow.com/a/13698982)
 - [How to change custom properties for many Word documents](https://stackoverflow.com/a/35920682)
 - [Powershell Update Fields in Header and Footer in Word](https://stackoverflow.com/questions/24887905/powershell-update-fields-in-header-and-footer-in-word)
+
+# Скрипт DocToPdf
+
+Конвертирует документы doc/docx в pdf. Обновляет поля (опционально), можно настраивать качество pdf (для просмотра или для печати)
+
+Github: <https://github.com/annjulyleon/psScriptsForDocs>
+
+Использование:
+```bash
+.\DocToPdf.ps1 -dir D:\path\to\docs -out D:\path\to\output -opt 0 -update $false
+```
+`-dir` - путь к папке с docx   
+`-out` - (необязательно) папка для выходных pdf, по умолчанию `$dir`  
+`-opt` - (необязательно) качество файла pdf, 1 - экспорт для веба и предпросмотра, меньший файл, 0 - экспорт для печати, большой файл. По умолчанию 0  
+`-update` - (необязательно) `$true` - обновить поля документа перед сохранением, `$false` - не обновлять. По умолчанию `$true`  
+
+Источники: 
+- [powershell script convert doc to pdf](https://social.technet.microsoft.com/Forums/ie/en-US/445b2429-e33c-4ce0-9d64-dd31422571bf/powershell-script-convert-doc-to-pdf?forum=winserverpowershell)
+- [Document.ExportAsFixedFormat Method](https://docs.microsoft.com/en-us/previous-versions/office/developer/office-2007/bb256835(v=office.12))
