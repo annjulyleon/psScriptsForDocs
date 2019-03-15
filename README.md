@@ -1,5 +1,7 @@
 # Powershell scripts for docs
 
+[RU](README_RU.md)
+
 ## UpdateDocxProps.ps1
 
 Add or update custom properties .docx for all documents in folder. Script updates all fields, headers and footers on save. Specify any number of properties via .xml configuration file.
