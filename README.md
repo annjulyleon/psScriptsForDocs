@@ -39,7 +39,7 @@ Usage:
 ```bash
 .\DocToPdf.ps1 -dir D:\path\to\docs -opt 1
 ```
-`-dir` path to folder with doc/docx
+`-dir` path to folder with doc/docx  
 `-opt` (optional) choose quality, 1 - export for print, smaller size, 0 - export for print, large file. Default 0
 
 Source: 
