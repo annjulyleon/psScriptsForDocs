@@ -55,7 +55,7 @@ Github: <https://github.com/annjulyleon/psScriptsForDocs>
 
 ## FindAndReplace.ps1
 
- Поиск и замена текстовой строки для нескольких .docx файлов
+Поиск и замена текстовой строки для нескольких .docx файлов
 
 Использование:
 ```bach
