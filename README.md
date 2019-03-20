@@ -1,6 +1,6 @@
 # Powershell scripts for docs
 
-[RU](README_RU.md)
+[RU](README_RU.md#powershell-scripts-for-docs)
 
 [UpdateDocxProps.ps1](#updatedocxpropsps1)  
 [DocToPdf.ps1](#doctopdfps1)  
