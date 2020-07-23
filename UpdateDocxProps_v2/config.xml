@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <startup></startup>
+  <appSettings>
+<!--Vars -->
+    <add key="year" value="2051"/>
+	<add key="systemShortName" value="Text"/>	
+	<add key="folder" value="some\\path"/>	
+  </appSettings>
+</configuration>

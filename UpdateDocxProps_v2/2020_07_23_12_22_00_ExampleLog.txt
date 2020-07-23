@@ -1,0 +1,11 @@
+Working directory:  D:\personal\scripts\updateProps_1-0
+Conig file:  D:\personal\scripts\updateProps_1-0\config.xml
+Working directory:  D:\personal\scripts\updateProps_1-0
+Processing D:\personal\scripts\updateProps_1-0\tt.doc
+Success! Custom Property: folder set to value: some\\path
+Success! Custom Property: systemShortName set to value: Text
+Success! Custom Property: year set to value: 2051
+Updating document fields.
+0
+0
+Saving document.
