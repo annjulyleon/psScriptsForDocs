@@ -3,12 +3,75 @@
 [UpdateDocxProps.ps1](#updatedocxpropsps1)  
 [DocToPdf.ps1](#doctopdfps1)  
 [FindAndReplace.ps1](#findandreplaceps1)
+[Clear metadata](#clearmetadata)
 
 ## UpdateDocxProps.ps1
 
 Скрипт PowerShell для добавления и обновления свойств в документах .docx. При сохранении обновляет поля, в том числе в колонтитулах. Свойства берет из конфигурационного файла .xml.
 
-**v2**: 
+### v3
+
+* теперь скрипт умеет обновлять встроенные свойства в Visio файлах
+* обновляет встроенные свойства в Word (Теги, Примечания, Тема, Руководитель...)
+* скрипт обновляет поля внутри форм (shapes) и надписей
+* изменен формат конфигурационного файла (секции для vsd и встроенных свойств Word)
+
+Структура файлов:
+
+* `config.xml` - конфигурационный файл. Теперь включает три секции: `customProperties` для кастомных свойств Word, `builtinProperties` - встроенные свойства Word, `vsdProperties` - встроенные Visio свойства. Пример:
+  
+    ```xml
+    <?xml version="1.0"?>
+    <configuration>
+      <customProperties>    
+        <add key="property1" value="new value for the property"/>	
+      </customProperties>
+      <builtinProperties>
+        <add key="Title" value="This is Title property"/>
+        <add key="Subject" value="This is Subject property"/>
+        <add key="Keywords" value="some tag more tag"/>
+        <add key="Comments" value="somecomment"/>
+      </builtinProperties>
+      <vsdProperties>
+        <add key="Company" value="LLC COMPANY"/>
+        <add key="Category" value="Category of the document"/>
+        <add key="Title" value="Title of the document"/>
+        <add key="Subject" value="Subject of the document"/>
+        <add key="Keywords" value="Some tags"/>
+        <add key="Description" value="Desc comment"/>
+        <add key="Manager" value="Project Manager"/>
+      </vsdProperties>
+    </configuration>
+    ```
+  Если какие-то свойства или вся секциия не нужны, то просто удалите все свойства в секции.
+
+```xml
+    <?xml version="1.0"?>
+    <configuration>
+      <customProperties>    
+        <add key="property1" value="new value for the property"/>	
+      </customProperties>
+      <builtinProperties>        
+      </builtinProperties>
+      <vsdProperties>        
+      </vsdProperties>
+    </configuration>
+```
+* `updateProps.bat` запускает скрипт для текущией и дочерних директорий (за исключением директорий, указанных в `exclude` срикпта. Если не нужно запускать скрипт для vsd файлов, просто закомментируйте эту строку в .bat:
+    ```bat
+    Powershell.exe -noprofile -executionpolicy bypass -File UpdateVsdProps_v1.ps1 > %CurrentDateTime%_vsdprops.txt
+    ```
+    
+* `UpdateDocxProps_v3.ps1` - скрипт для обновления doc/docx свойств;
+
+* `UpdateVsdProps_v1.ps1` - обновляет vsd свойства;
+
+* два тестовых файла: `testvsdfile.vsd` и `teswordfile.docx`.
+
+Измените конфигурационный файл и запустите скрипт с помощью `.bat`. Оба скрипта имеют одинаковые параметры:`-dir` (по умолчанию - текущая директория) и `-conf` (по умолчанию - файл `config,xml`в текущей директории).
+
+
+### v2: 
 
 * рефакторинг кода до новой версии PowerShell
 * исключение папок (переменная exclude в коде), по умолчанию исключаются папки `old,_old,source,_source`
@@ -52,7 +115,11 @@
 
 Конвертирует документы doc/docx в pdf. Обновляет поля (опционально), можно настраивать качество pdf (для просмотра или для печати).
 
-**v2**:
+### v3:
+
+* теперь скрипт умеет обновлять перед выводом в pdf поля в фигурах и надписях
+
+### v2:
 
 * убран параметр out. Теперь всегда pdf сохраняется в папку, где был документ docx. Сделано, чтобы можно было обрабатывать сразу много папок
 * добавлен bat для запуска с логированием. Если используется русский язык, то нужно раскомментировать строку `chcp 1251` (убрать REM) в bat-файле
@@ -114,3 +181,15 @@ $wordFound = $range.Find.Execute("Ошибка!")
 - [Replacing many Words in a .docx File with Powershell](https://stackoverflow.com/questions/40101846/replacing-many-words-in-a-docx-file-with-powershell)
 - [PowerShell script to Find and Replace in Word Document, including Header, Footer and TextBoxes within
 ](https://codereview.stackexchange.com/questions/174455/powershell-script-to-find-and-replace-in-word-document-including-header-footer)
+
+## ClearMetadata
+
+Небольшой скрипт, который удаляет все метаданные из файлов .docx и устанавливает все даты на текущую (Дата создания, Дата доступа, Дата сохранения). Включен .bat для запуска скрипта для текущей и дочерних директорий.
+
+Для запуска вручную выполнить команду:
+
+```
+.\clearMetadata.ps1 -path D:\path\to\folder
+```
+
+`-path` - путь к папке с файлами, по умолчанию - текущая, в которой находится скрипт.

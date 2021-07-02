@@ -1,0 +1,13 @@
+Working directory:  D:\Library\scripts\UpdateDocxProps_v3
+Conig file:  D:\Library\scripts\UpdateDocxProps_v3\config.xml
+Working directory:  D:\Library\scripts\UpdateDocxProps_v3
+Processing D:\Library\scripts\UpdateDocxProps_v3\teswordfile.docx
+Success! Custom Property: property1 set to value: new value for the property
+Success! Custom Property: folder set to value: some path
+Success! Custom Property: year set to value: 2021
+Property  Subject set to value  This is Subject property
+Property  Title set to value  This is Title property
+Property  Comments set to value  somecomment
+Property  Keywords set to value  some tag more tag
+Updating document fields.
+Saving document.

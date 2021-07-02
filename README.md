@@ -5,12 +5,75 @@
 [UpdateDocxProps.ps1](#updatedocxpropsps1)  
 [DocToPdf.ps1](#doctopdfps1)  
 [FindAndReplace.ps1](#findandreplaceps1)
+[Clear metadata](#clearmetadata)
+
+DISCLAMER: scripts are developed and tested on russian version of Microsoft Office and Windows 10, so some language specific functions my work incorrectly. 
 
 ## UpdateDocxProps.ps1
 
 Add or update custom properties .docx for all documents in folder. Script updates all fields, headers and footers on save. Specify any number of properties via .xml configuration file.
 
-**v2**: 
+### v3
+
+* added optional update for vsd files (built-in properties)
+* update for built-in properties for doc/docx
+* script can now update fields inside shapes and labels
+* changed .xml config (just remove properties you don't need)
+
+Folder structure:
+
+* `config.xml` - configuration file. Now contains 3 sections: `customProperties` for custom word properties, `builtinProperties` - built-in word properties, `vsdProperties` - built-in visio properties.
+  
+    ```xml
+    <?xml version="1.0"?>
+    <configuration>
+      <customProperties>    
+        <add key="property1" value="new value for the property"/>	
+      </customProperties>
+      <builtinProperties>
+        <add key="Title" value="This is Title property"/>
+        <add key="Subject" value="This is Subject property"/>
+        <add key="Keywords" value="some tag more tag"/>
+        <add key="Comments" value="somecomment"/>
+      </builtinProperties>
+      <vsdProperties>
+        <add key="Company" value="LLC COMPANY"/>
+        <add key="Category" value="Category of the document"/>
+        <add key="Title" value="Title of the document"/>
+        <add key="Subject" value="Subject of the document"/>
+        <add key="Keywords" value="Some tags"/>
+        <add key="Description" value="Desc comment"/>
+        <add key="Manager" value="Project Manager"/>
+      </vsdProperties>
+    </configuration>
+    ```
+  If you don't need to change any vsd or built-in word properties just remove them from the section
+```xml
+    <?xml version="1.0"?>
+    <configuration>
+      <customProperties>    
+        <add key="property1" value="new value for the property"/>	
+      </customProperties>
+      <builtinProperties>        
+      </builtinProperties>
+      <vsdProperties>        
+      </vsdProperties>
+    </configuration>
+```
+* `updateProps.bat` to launch script for current directory and all child directories. You can comment out this line, if you don't need to update vsd properties:
+    ```bat
+    Powershell.exe -noprofile -executionpolicy bypass -File UpdateVsdProps_v1.ps1 > %CurrentDateTime%_vsdprops.txt
+    ```
+    
+* `UpdateDocxProps_v3.ps1` - updates docx properties;
+
+* `UpdateVsdProps_v1.ps1` - updates vsd properties;
+
+* two test files: `testvsdfile.vsd` and `teswordfile.docx`.
+
+Just change config and launch the script from the`.bat` file. Both scripts have the same parameters: `-dir` (defaults to current dir) and `-conf` (defaults to current dir and `config,xml` file). 
+
+### v2: 
 
 * code refactoring
 * exclude folders (`exclude` variable), default is `old,_old,source,_source`
@@ -24,7 +87,7 @@ Example usage:
 Use with .bat:
 1. copy script files to doc/docx folder
 2. change config.xml, add properties
-3. launch updateProps.bat with administrative rights (to overwrite ps restriction). Uncomment "chcp 1251" string if using with RU language
+3. launch updateProps.bat with administrative rights (to overwrite PowerShell restriction). Uncomment "chcp 1251" string if using with RU language
 4. check log file
 
 Example config:
@@ -49,14 +112,18 @@ Source:
 
 Convert .docx and .doc to pdf + update fields (optional).
 
-**v2**:
+### v3:
+
+* script now updates fields inside shapes and labels
+
+### v2:
 
 * remove `-out` parameter. Saves the pdf to the original docx folder
 * example bat-file with logging added
 * vsd/vsdx to pdf script added (separate file)
 * error checking added for broken links (see below to fix script for your language, Russian is default)
 * update TOC
-* exclude folders с `old, _old, source, _source` 
+* exclude folders  `old, _old, source, _source` 
 
 Usage **v1**:
 
@@ -111,3 +178,16 @@ Source and usefull links:
 - [Replacing many Words in a .docx File with Powershell](https://stackoverflow.com/questions/40101846/replacing-many-words-in-a-docx-file-with-powershell)
 - [PowerShell script to Find and Replace in Word Document, including Header, Footer and TextBoxes within
 ](https://codereview.stackexchange.com/questions/174455/powershell-script-to-find-and-replace-in-word-document-including-header-footer)
+
+## ClearMetadata
+
+Small script that clears all metadata from docx files and reset all dates (created, last access, last write), to `now`. Included .bat file launch script for all files in current and child directories. 
+
+To launch script manually:
+
+```
+.\clearMetadata.ps1 -path D:\path\to\folder
+```
+
+`-path` defaults to current directory.
+

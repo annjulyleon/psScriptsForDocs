@@ -1,0 +1,8 @@
+Property  Subject set to value  Subject of the document
+Property  Company set to value  LLC COMPANY
+Property  Manager set to value  Project Manager
+Property  Category set to value  Category of the document
+Property  Description set to value  Desc comment
+Property  Keywords set to value  Some tags
+Property  Title set to value  Title of the document
+0

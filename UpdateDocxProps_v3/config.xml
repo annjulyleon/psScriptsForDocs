@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<configuration>
+  <customProperties>
+    <add key="year" value="2021"/>
+	<add key="property1" value="new value for the property"/>	
+	<add key="folder" value="some path"/>	
+  </customProperties>
+  <builtinProperties>
+	<add key="Title" value="This is Title property"/>
+	<add key="Subject" value="This is Subject property"/>
+	<add key="Keywords" value="some tag more tag"/>
+	<add key="Comments" value="somecomment"/>
+  </builtinProperties>
+  <vsdProperties>
+    <add key="Company" value="LLC COMPANY"/>
+	<add key="Category" value="Category of the document"/>
+	<add key="Title" value="Title of the document"/>
+	<add key="Subject" value="Subject of the document"/>
+	<add key="Keywords" value="Some tags"/>
+	<add key="Description" value="Desc comment"/>
+	<add key="Manager" value="Project Manager"/>
+  </vsdProperties>
+</configuration>
