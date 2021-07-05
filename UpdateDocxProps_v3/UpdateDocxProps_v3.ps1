@@ -17,7 +17,7 @@ $path = $dir.trim('\')
 $exclude = "old|_old|source|_source"
 
 write-host "Working directory: " $dir 
-write-host "Conig file: " $conf
+write-host "Config file: " $conf
 
 # Read config file and load values.
 # Example XML:
@@ -38,9 +38,9 @@ if(Test-Path $conf) {
 		$global:builtinProperties = @{}
         $config = [xml](get-content $conf)
         foreach ($addNode in $config.configuration.customProperties.add) {
-            if ($addNode.Value.Contains(‘,’)) {
+            if ($addNode.Value.Contains(‘;’)) {
                 # Array case
-                $value = $addNode.Value.Split(‘,’)
+                $value = $addNode.Value.Split(‘;’)
                     for ($i = 0; $i -lt $value.length; $i++) { 
                         $value[$i] = $value[$i].Trim() 
                     }
@@ -53,9 +53,9 @@ if(Test-Path $conf) {
         }
 		
 		foreach ($addNode in $config.configuration.builtinProperties.add) {
-            if ($addNode.Value.Contains(‘,’)) {
+            if ($addNode.Value.Contains(‘;’)) {
                 # Array case
-                $value = $addNode.Value.Split(‘,’)
+                $value = $addNode.Value.Split(‘;’)
                     for ($i = 0; $i -lt $value.length; $i++) { 
                         $value[$i] = $value[$i].Trim() 
                     }
