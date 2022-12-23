@@ -1,5 +1,7 @@
 # Powershell scripts for docs
 
+**DISCLAIMER**: All scripts are moved to [DOC-SCRIPTS](https://github.com/annjulyleon/doc-scripts) repo ([UpdateDocxProps](https://github.com/annjulyleon/doc-scripts/tree/main/update_docx_props), [Docx2pdf](https://github.com/annjulyleon/doc-scripts/tree/main/docx2pdf)). This repository is now archived.
+
 [RU](README_RU.md#powershell-scripts-for-docs)
 
 [UpdateDocxProps.ps1](#updatedocxpropsps1)  
